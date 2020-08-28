@@ -1,0 +1,28 @@
+page-filter {
+  .item {
+    .item-inner {
+      transition: border-color .15s;
+    }
+
+    &.has-error {
+      .item-inner {
+        border-color: #e22;
+      }
+    }
+  }
+
+  .group {
+    margin-bottom: 50px;
+
+    &:first-child {
+      margin-bottom: 30px;
+    }
+  }
+
+  .message {
+    display: inline-block;
+    padding: 5px;
+    margin-left: 15px;
+    color: #e22;
+  }
+}

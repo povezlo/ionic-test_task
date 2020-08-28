@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Фильтр</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="dismissModal()">Закрыть</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="submitForm()" novalidate [(formGroup)]="form">
+    <div class="group">
+      <ion-item [ngClass]="{'has-error': fromControl.invalid}">
+        <ion-input type="number" placeholder="Цена от:" formControlName="from"></ion-input>
+      </ion-item>
+
+      <ion-note class="message" *ngIf="fromControl.invalid">
+        Цена не может быть ниже 0
+      </ion-note>
+
+      <ion-item [ngClass]="{'has-error': toControl.invalid}">
+        <ion-input type="number" placeholder="Цена до:" formControlName="to"></ion-input>
+      </ion-item>
+
+      <ion-note class="message" *ngIf="toControl.invalid">
+        Цена не может быть ниже 0
+      </ion-note>
+    </div>
+
+    <div class="group">
+      <ion-item>
+        <ion-label>Наличие парковки обязательно</ion-label>
+        <ion-checkbox color="secondary" formControlName="parking"></ion-checkbox>
+      </ion-item>
+    </div>
+
+    <ion-row>
+      <ion-col col-6>
+        <button type="submit" ion-button block color="secondary" [disabled]="form.invalid">
+          <span>Применить</span>
+        </button>
+      </ion-col>
+
+      <ion-col col-6>
+        <button type="button" ion-button block color="danger" (click)="resetForm()">
+          <span>Сбросить</span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

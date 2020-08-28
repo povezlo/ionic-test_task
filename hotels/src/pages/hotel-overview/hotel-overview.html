@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>{{ hotel.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img *ngIf="hotel.imageUrl" [src]="hotel.imageUrl">
+    <img *ngIf="!hotel.imageUrl" src="assets/imgs/no-image.jpg">
+
+    <ion-card-header>
+      <ion-card-title>{{ hotel.description }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngIf="hotel.roomCost !== undefined">
+          <ion-icon name="cash"></ion-icon>
+          <ion-label><strong>Цена:</strong> {{ hotel.roomCost }}</ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="hotel.hasParking !== undefined">
+          <ion-icon name="car"></ion-icon>
+          <ion-label><strong>Наличие парковки: </strong>{{ hotel.hasParking ? 'есть' : 'нет' }}</ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="hotel.address">
+          <ion-icon name="pin"></ion-icon>
+          <ion-label><strong>Адрес: </strong>{{ hotel.address }}</ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="hotel.phone">
+          <ion-icon name="call"></ion-icon>
+          <ion-label><strong>Телефон: </strong>{{ hotel.phone }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
